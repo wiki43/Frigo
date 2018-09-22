@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Frigo</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="productTxt">Name of Product</string>
+    <string name="productExprTxt">Product Expiration Date</string>
+    <string name="productManualBarcodeTxt">Manual barcode</string>
+    <string name="productQuantityTxt">Quantity</string>
+    <string name="itemnoBarcode">Item has no barcode</string>
+    <string name="productDateTxt">Product Date</string>
+    <string name="listItemheadingTxt">Barcode Item\'s</string>
+    <string name="scan">Scan</string>
+    <string name="scanStoptxt">Stop</string>
+    <string name="productBarcodeTxt">Barcode Number</string>
+    <string name="removetXt">Remove Barcode</string>
+    <string name="addbarcodetXt">Add Barcode</string>
+    <string name="ProdcutBarcodeTxt">Product Barcode</string>
+    <string name="progrText">Progress</string>
+    <string name="updateBarcodeTxt">Update</string>
+
+</resources>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:id="@+id/relativelayout"
+                    android:layout_width="fill_parent"
+                    android:layout_height="280dp"
+                    android:background="@drawable/no_barcode_button_border">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/field_round_button"
+                        android:text="@string/scan"
+                        android:visibility="gone" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="5dp"
+                        android:background="@drawable/field_round_button"
+                        android:text="@string/scanStoptxt"
+                        android:visibility="gone" />
+
+                    <!-- <TextView
+                         android:id="@+id/barcodeTxtview"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:layout_centerVertical="true"
+                         android:gravity="center"
+                         android:text="@string/barcodetxt" />
+                     <ImageView
+                         android:id="@+id/barcodeImagview"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:layout_centerVertical="true"
+                         android:gravity="center" />-->
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_toLeftOf="@+id/linearButton"
+                        android:orientation="vertical"
+                        android:paddingTop="10dp"
+                        android:weightSum="1">
+
+                        <EditText
+                            android:id="@+id/productnameTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/productTxt"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:singleLine="true"
+                            android:textSize="15dp" />
+
+                        <EditText
+                            android:id="@+id/productExprieTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:enabled="false"
+                            android:layout_marginRight="5dp"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/productExprTxt"
+                            android:inputType="date"
+                            android:padding="5dp"
+                            android:singleLine="true"
+                            android:textSize="15dp" />
+
+                        <EditText
+                            android:id="@+id/productManualBarcodeTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/productManualBarcodeTxt"
+                            android:inputType="text"
+                            android:enabled="false"
+                            android:padding="5dp"
+                            android:singleLine="true"
+                            android:textSize="15dp" />
+
+                        <EditText
+                            android:id="@+id/productquantityTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/productQuantityTxt"
+                            android:inputType="number"
+                            android:padding="5dp"
+                            android:singleLine="true"
+                            android:textSize="15dp" />
+
+                        <EditText
+                            android:id="@+id/productEnterBarcodeTxt"
+                            android:layout_width="match_parent"
+                            android:layout_height="35dp"
+                            android:layout_marginRight="5dp"
+                            android:background="@android:color/transparent"
+                            android:hint="@string/productBarcodeTxt"
+                            android:inputType="text"
+                            android:padding="5dp"
+                            android:enabled="false"
+                            android:singleLine="true"
+                            android:textSize="15dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:orientation="vertical"
+                        android:weightSum="1">
+
+                        <Button
+                            android:id="@+id/noBarcodeBtn"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/no_barcode_button_border"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:text="@string/itemnoBarcode"
+                            android:textSize="10sp" />
+
+                        <Button
+                            android:id="@+id/addOrremovBtn"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@+id/noBarcodeBtn"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/no_barcode_button_border"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:text="@string/addbarcodetXt"
+                            android:textSize="10sp" />
+
+                        <Button
+                            android:visibility="gone"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/no_barcode_button_border"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:text="@string/removetXt"
+                            android:textSize="10sp" />
+
+                       <!-- //id allBarcodeBtn-->
+                        <Button
+                            android:id="@+id/updateBarcodeBtn"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/no_barcode_button_border"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:text="@string/updateBarcodeTxt"
+                            android:textSize="10sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+        </ScrollView>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
