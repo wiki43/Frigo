@@ -14,6 +14,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -52,11 +53,6 @@ public class MainActivity extends AppCompatActivity
     private Button addBarcodeDetails;
     private Button barcodeUpdateBtn;
     private EditText barcodenameEdit, barcodeEpireDateET, barcodeManualEt, barcodeQualityEt, enterBarcoedET;
-    private String barcodenameString;
-    private String barcodeEpireDateString;
-    private String barcodeManualString;
-    private String barcodeQualityString;
-
     private RelativeLayout relativeLayout;
 
     private DatabaseHelper db;
@@ -86,35 +82,17 @@ public class MainActivity extends AppCompatActivity
         zXingScannerView.setVerticalFadingEdgeEnabled(true);
         zXingScannerView.setResultHandler(MainActivity.this);
         zXingScannerView.startCamera();
-
-        //TODO:- get value from intent
-        Bundle bundle = getIntent().getExtras();
-        if (bundle == null) {
-            Log.e(TAG, "bundle is null ");
-        } else {
-
-            barcodeEpireDateET.setEnabled(false);
-            barcodeManualEt.setEnabled(false);
-            enterBarcoedET.setEnabled(false);
-
-            barcodenameString = bundle.getString("barNameKEY");
-            barcodeEpireDateString = bundle.getString("barDateKEY");
-            barcodeQualityString = bundle.getString("barQuantityKEY");
-            barcodeManualString = bundle.getString("barNumberKEY");
-
-            barcodeUpdateBtn.setVisibility(View.VISIBLE);
-
-            barcodenameEdit.setText(barcodenameString);
-            barcodeEpireDateET.setText(barcodeEpireDateString);
-            barcodeManualEt.setText(barcodeManualString);
-            enterBarcoedET.setText(barcodeManualString);
-            barcodeQualityEt.setText(barcodeQualityString);
-        }
         //---------------------------------------------------------------------
         db = new DatabaseHelper(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         //----------------------------------------------------------------------
         addBarcodeDetails.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,43 +165,6 @@ public class MainActivity extends AppCompatActivity
                     snackbar.show();
                 }
 
-            }
-        });
-
-        //TODO:- click event on update button
-        barcodeUpdateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String barcodeNo, barcodeName, barcodeQuantity;
-
-                barcodeEpireDateET.setClickable(false);
-                barcodeEpireDateET.setFocusable(false);
-
-                barcodeManualEt.setClickable(false);
-                barcodeManualEt.setFocusable(false);
-
-                enterBarcoedET.setClickable(false);
-                enterBarcoedET.setFocusable(false);
-
-                barcodeNo = barcodeManualEt.getText().toString();
-                barcodeName = barcodenameEdit.getText().toString();
-                barcodeQuantity = barcodeQualityEt.getText().toString();
-
-                int updateCount = db.updateNote(barcodeNo, barcodeName, barcodeQuantity);
-                if (updateCount > 0) {
-
-                    barcodenameEdit.setText("");
-                    barcodeEpireDateET.setText("");
-                    barcodeManualEt.setText("");
-                    enterBarcoedET.setText("");
-                    barcodeQualityEt.setText("");
-
-                    Snackbar snackbar =
-                            Snackbar.make(drawerLayout, "Data Updated.", Snackbar.LENGTH_SHORT);
-                    snackbar.show();
-                } else {
-                    Log.e(TAG, "Data not updated.");
-                }
             }
         });
 
@@ -363,8 +304,6 @@ public class MainActivity extends AppCompatActivity
         enterBarcoedET = findViewById(R.id.productEnterBarcodeTxt);
         //buttons
         addBarcodeDetails = findViewById(R.id.addOrremovBtn);
-        barcodeUpdateBtn = findViewById(R.id.updateBarcodeBtn);
-
         //TODO:- set To button click
         barcodenameEdit.setText("");
 
@@ -382,12 +321,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        finish();
     }
 
     @Override
@@ -421,6 +355,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_barcodeData) {
             askForPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, WRITE_EXST);
             startActivity(new Intent(MainActivity.this, BarcodeListItems.class));
+            finish();
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -447,6 +382,16 @@ public class MainActivity extends AppCompatActivity
         }
 
         zXingScannerView.resumeCameraPreview(this);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK))
+        {
+            finish();
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

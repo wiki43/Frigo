@@ -78,7 +78,6 @@ public class BarcodeListItems extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         startActivity(new Intent(BarcodeListItems.this, MainActivity.class));
         finish();
     }

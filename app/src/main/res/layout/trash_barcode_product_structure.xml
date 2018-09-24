@@ -34,16 +34,16 @@
 
             <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="25dp"
                 android:layout_alignParentRight="true"
-                android:paddingRight="-7dp"
+                android:paddingRight="-3dp"
                 android:visibility="visible">
 
                 <ImageView
                     android:id="@+id/deleteImgBarcode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
+                   android:padding="5dp"
                     android:src="@drawable/ic_delete" />
 
             </RelativeLayout>
@@ -53,34 +53,37 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="25dp"
                 android:layout_toRightOf="@+id/barcodeImgview"
-                android:padding="3dp">
+                android:paddingLeft="5dp"
+                >
 
-                <TextView
+                <EditText
                     android:id="@+id/productNameTxt"
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentLeft="true"
                     android:layout_toLeftOf="@+id/productDate"
-                    android:gravity="left"
-                    android:paddingRight="5dp"
+                    android:background="@android:color/transparent"
+                    android:padding="5dp"
                     android:scrollbars="horizontal"
                     android:singleLine="true"
+                    android:textSize="10dp"
                     android:text="@string/productTxt"
                     android:textAlignment="gravity" />
 
                 <TextView
                     android:id="@+id/productDate"
                     android:layout_width="wrap_content"
-                    android:layout_height="20dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentRight="true"
-                    android:gravity="right"
+                    android:gravity="right|center"
+                    android:textSize="10dp"
                     android:text="@string/productDateTxt"
                     android:textAlignment="gravity" />
 
                 <TextView
                     android:id="@+id/productManualBarcodext"
                     android:layout_width="wrap_content"
-                    android:layout_height="55dp"
+                    android:layout_height="53dp"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@+id/productNameTxt"
                     android:layout_toLeftOf="@+id/productDate"
@@ -93,14 +96,19 @@
                     android:textAlignment="gravity"
                     android:textSize="10dp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/productquantityTxt"
                     android:layout_width="wrap_content"
+                    android:paddingRight="12dp"
+                    android:paddingLeft="10dp"
                     android:layout_height="25dp"
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/productNameTxt"
-                    android:gravity="right"
+                    android:gravity="right|center"
+                    android:paddingBottom="5dp"
+                    android:background="@android:color/transparent"
                     android:text="@string/productQuantityTxt"
+                    android:textSize="10dp"
                     android:textAlignment="gravity" />
             </RelativeLayout>
         </RelativeLayout>

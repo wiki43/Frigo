@@ -164,12 +164,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return notesArraylist;
     }
 
-    public int updateNote(String barcodeNumber, String barcodeName, String barcodeQuantity) {
+    public int updateBarcodeName(String barcodeNumber, String barcodeName) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(Note.COLUMN_NAME, barcodeName);
-        values.put(Note.COLUMN_QUANTITY, barcodeQuantity);
+
+        // updating row
+        int updateCount = db.update(Note.TABLE_NAME, values, Note.COLUMN_MANUAL_BARCODE + " = ?",
+                new String[]{String.valueOf(barcodeNumber)});
+
+        if (updateCount == 0) {
+            Log.e(TAG, "deleteNote: Not delete. " + updateCount);
+        } else {
+            Log.e(TAG, "deleteNote: after delete. " + updateCount);
+        }
+        db.close();
+
+        return updateCount;
+    }
+    public int updateBarcodeQuantity(String barcodeNumber, String quantity) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(Note.COLUMN_QUANTITY, quantity);
 
         // updating row
         int updateCount = db.update(Note.TABLE_NAME, values, Note.COLUMN_MANUAL_BARCODE + " = ?",
